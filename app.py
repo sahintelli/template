@@ -42,6 +42,7 @@ def main():
 
     # If API key and uploaded files are provided, display the file names and types
     if api_key and uploaded_files:
+        st.write(uploaded_files)
         for uploaded_file in uploaded_files:
             st.write(f"File name: {uploaded_file.name} - file type: {uploaded_file.type}")
 
