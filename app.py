@@ -26,10 +26,12 @@ def sidebar_setup():
     # If your key is stored in secrets, uncomment the line below and comment out the above line
     # api_key = st.secrets["api_key"]
 
-    # Some options to upload files (currently commented out)
-    # uploaded_files = None
-    # uploaded_files = st.sidebar.file_uploader("Upload CSV or XLSX File", accept_multiple_files=False, type=['csv', 'xlsx'])
-    uploaded_files = st.sidebar.file_uploader("Upload files", accept_multiple_files=False, type=["pdf", "docx"])
+    # Some options to upload files. Select or modify the code snippet that best suits your needs
+    accept_multiple_files = False
+    # uploaded_files = st.sidebar.file_uploader("Upload CSV or XLSX File", accept_multiple_files=accept_multiple_files, type=['csv', 'xlsx'])
+    uploaded_files = st.sidebar.file_uploader("Upload files", accept_multiple_files=accept_multiple_files, type=["pdf", "docx"])
+    if not accept_multiple_files:
+        uploaded_files = list(uploaded_files)
 
     # Return the selected model, stream setting, API key, and uploaded files
     return model, stream, api_key, uploaded_files
