@@ -27,11 +27,13 @@ def sidebar_setup():
     # api_key = st.secrets["api_key"]
 
     # Some options to upload files. Select or modify the code snippet that best suits your needs
-    accept_multiple_files = False
     # uploaded_files = st.sidebar.file_uploader("Upload CSV or XLSX File", accept_multiple_files=accept_multiple_files, type=['csv', 'xlsx'])
+    accept_multiple_files = False
+    # Handle file upload, always return a list
     uploaded_files = st.sidebar.file_uploader("Upload files", accept_multiple_files=accept_multiple_files, type=["pdf", "docx"])
-    if not accept_multiple_files:
-        uploaded_files = list(uploaded_files)
+    
+    # Ensure `uploaded_files` is always a list
+    uploaded_files = [uploaded_files] if uploaded_files and not accept_multiple_files else uploaded_files
 
     # Return the selected model, stream setting, API key, and uploaded files
     return model, stream, api_key, uploaded_files
